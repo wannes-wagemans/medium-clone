@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#CMS
+mediumsanity/node_modules
+
 # testing
 /coverage
 
