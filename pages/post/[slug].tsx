@@ -5,6 +5,7 @@ import { Post } from '../../typings'
 import PortableText from 'react-portable-text'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
+import { Comment } from '../../components/Comment'
 
 interface Props {
   post: Post
@@ -20,8 +21,6 @@ interface IFormInput {
 function Post({ post }: Props) {
   const [submitted, setSubmitted] = useState(false)
 
-  console.log(post)
-
   const {
     register,
     handleSubmit,
@@ -34,7 +33,6 @@ function Post({ post }: Props) {
       body: JSON.stringify(data),
     })
       .then(() => {
-        console.log(data)
         setSubmitted(true)
       })
       .catch((error) => {
@@ -51,7 +49,7 @@ function Post({ post }: Props) {
         src={urlFor(post.mainImage).url()!}
       />
       <article className="mx-auto max-w-4xl p-5">
-        <h1 className="mt-10 mb-3 text-3xl">{post.title}</h1>
+        <h1 className="mt-8 mb-3 text-3xl">{post.title}</h1>
         <h2 className="mb-2 text-xl font-light text-gray-500">
           {post.description}
         </h2>
@@ -64,7 +62,7 @@ function Post({ post }: Props) {
           />
           <p className="text-sm font-extralight">
             Post by <span className="text-green-600">{post.author.name}</span> -
-            published at {new Date(post._createdAt).toLocaleString()}
+            published at {new Date(post._createdAt).toLocaleDateString()}
           </p>
         </div>
 
@@ -93,21 +91,27 @@ function Post({ post }: Props) {
         </div>
       </article>
 
-      <div className="mx-auto max-w-4xl">
-        <hr className="border-0.5 m-5 mx-5 border-gray-300" />
-      </div>
-
-      <div className="my-10 mx-auto max-w-2xl p-5">
-        <h3 className="mb-4 text-3xl font-bold">Comments</h3>
-        {post.comments.map((item) => (
-          <div key={item._id}>
-            <p className="mb-2">
-              <span className="text-yellow-500">{item.name} </span>:{' '}
-              {item.comment}
-            </p>
+      {post.comments.length !== 0 && (
+        <>
+          <div className="mx-auto max-w-4xl">
+            <hr className="border-0.5 m-5 mx-5 border-gray-300" />
           </div>
-        ))}
-      </div>
+
+          <div className="my-10 mx-auto max-w-2xl p-5">
+            <h3 className="mb-4 text-3xl font-bold">
+              Comments ({post.comments.length})
+            </h3>
+            {post.comments.map((item) => (
+              <Comment
+                key={item._id}
+                name={item.name}
+                comment={item.comment}
+                _createdAt={item._createdAt}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       <div className="mx-auto max-w-4xl">
         <hr className="border-0.5 m-5 mx-5 border-gray-300" />
@@ -118,7 +122,7 @@ function Post({ post }: Props) {
           <h3 className="text-3xl font-semibold">
             Thanks for submitting your comment.
           </h3>
-          <p>Once it has been approved, it will show below</p>
+          <p>Once it has been approved, it will show</p>
         </div>
       ) : (
         <form
@@ -126,7 +130,7 @@ function Post({ post }: Props) {
           className="mx-auto mb-10 flex max-w-2xl flex-col p-5"
         >
           <h4 className="text-sm text-yellow-500">Enjoyed this article?</h4>
-          <h3 className="mb-4 text-3xl font-bold">Leave a comment below</h3>
+          <h3 className="mb-4 text-3xl font-bold">Leave a comment</h3>
 
           <input
             type="hidden"
@@ -192,6 +196,7 @@ function Post({ post }: Props) {
 
           <input
             type="submit"
+            value="Send"
             className="focus:shadow-outline cursor-pointer rounded bg-yellow-500 px-3 py-2 font-bold text-white shadow hover:bg-yellow-400 focus:outline-none"
           />
         </form>
