@@ -13,10 +13,6 @@ interface CardProps {
   }
   title: string
   description: string
-  author: {
-    name: string
-    image: string
-  }
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -24,7 +20,6 @@ export const Card: React.FC<CardProps> = ({
   mainImage,
   title,
   description,
-  author,
 }) => {
   return (
     <Link href={`/post/${slug.current}`}>
@@ -36,14 +31,8 @@ export const Card: React.FC<CardProps> = ({
         <div className="flex items-center justify-between bg-white p-5">
           <div>
             <p className="text-lg font-bold">{title}</p>
-            <p className="text-xs">
-              {description} by {author.name}
-            </p>
+            <p className="text-xs">{description}</p>
           </div>
-          <img
-            className="h-12 w-12 rounded-full"
-            src={urlFor(author.image).url()!}
-          />
         </div>
       </div>
     </Link>

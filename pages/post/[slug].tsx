@@ -73,11 +73,12 @@ function Post({ post }: Props) {
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
             serializers={{
+              p: (props: any) => <p className="my-4" {...props} />,
               h1: (props: any) => (
-                <h1 className="my-5 text-2xl font-bold" {...props} />
+                <h1 className="my-4 text-2xl font-bold" {...props} />
               ),
               h2: (props: any) => (
-                <h2 className="my-5 text-xl font-bold" {...props} />
+                <h2 className="my-4 text-xl font-bold" {...props} />
               ),
               li: (props: any) => <li className="ml-4 list-disc" {...props} />,
               ul: (props: any) => <ul className="m-4" {...props} />,
@@ -85,6 +86,12 @@ function Post({ post }: Props) {
                 <a href={href} className="text-green-500 hover:underline">
                   {children}
                 </a>
+              ),
+              blockquote: (props: any) => (
+                <p className="my-4 bg-slate-800 p-4 text-white" {...props} />
+              ),
+              span: (props: any) => (
+                <span className="text-green-500" {...props} />
               ),
             }}
           />

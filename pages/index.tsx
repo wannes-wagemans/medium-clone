@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { Banner } from '../components/Banner'
 import { Card } from '../components/Card'
 import Header from '../components/Header'
-import { sanityClient, urlFor } from '../sanity'
+import { sanityClient } from '../sanity'
 import { Post } from '../typings'
 
 interface Props {
@@ -12,25 +11,25 @@ interface Props {
 
 export default function Home({ posts }: Props) {
   return (
-    <div className="mx-auto max-w-7xl">
+    <div>
       <Head>
-        <title>Wannes Blog</title>
+        <title>WAWA React</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Banner />
-
-      <div className="grid grid-cols-1 gap-3 p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
-        {posts.map((item) => (
-          <Card
-            key={item._id}
-            slug={item.slug}
-            mainImage={item.mainImage}
-            title={item.title}
-            description={item.description}
-            author={item.author}
-          />
-        ))}
+      <div className="p-5">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+          {posts.map((item) => (
+            <Card
+              key={item._id}
+              slug={item.slug}
+              mainImage={item.mainImage}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
