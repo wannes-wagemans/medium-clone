@@ -10,6 +10,7 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
+  console.log(posts)
   return (
     <div>
       <Head>
@@ -27,6 +28,7 @@ export default function Home({ posts }: Props) {
               mainImage={item.mainImage}
               title={item.title}
               description={item.description}
+              categories={item.categories}
             />
           ))}
         </div>
@@ -36,7 +38,7 @@ export default function Home({ posts }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  const query = `*[_type == "post"]{
+  const query = `*[_type == "post"] | order(_createdAt desc){
     _id,
     title,
     author -> {
@@ -46,6 +48,7 @@ export const getServerSideProps = async () => {
     description,
     mainImage,
     slug,
+    categories[]->{name, color},
   }`
 
   const posts = await sanityClient.fetch(query)

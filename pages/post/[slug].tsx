@@ -6,6 +6,7 @@ import PortableText from 'react-portable-text'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 import { Comment } from '../../components/Comment'
+import { Category } from '../../components/Category'
 
 interface Props {
   post: Post
@@ -39,7 +40,7 @@ function Post({ post }: Props) {
         console.log(error)
       })
   }
-
+  console.log(post)
   return (
     <main>
       <Header />
@@ -53,6 +54,11 @@ function Post({ post }: Props) {
         <h2 className="mb-2 text-xl font-light text-gray-500">
           {post.description}
         </h2>
+        <div className="mt-0 mb-4 flex gap-x-2 overflow-hidden">
+          {post.categories.map((item) => (
+            <Category key={item.name} name={item.name} color={item.color} />
+          ))}
+        </div>
 
         <div className="flex items-center space-x-2">
           <img
@@ -250,6 +256,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       post._ref == ^._id &&
       approved == true],
     description,
+    categories[] -> {color, name},
     mainImage,
     slug,
     body
