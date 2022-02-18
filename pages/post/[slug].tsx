@@ -86,6 +86,9 @@ function Post({ post }: Props) {
               h2: (props: any) => (
                 <h2 className="my-4 text-xl font-bold" {...props} />
               ),
+              h3: (props: any) => (
+                <h3 className="my-4 text-lg font-bold" {...props} />
+              ),
               li: (props: any) => <li className="ml-4 list-disc" {...props} />,
               ul: (props: any) => <ul className="m-4" {...props} />,
               link: ({ href, children }: any) => (
