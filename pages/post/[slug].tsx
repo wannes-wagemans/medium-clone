@@ -46,15 +46,15 @@ function Post({ post }: Props) {
       <Header />
 
       <img
-        className="h-80 w-full object-cover"
+        className="h-80 w-full border-b border-black object-cover"
         src={urlFor(post.mainImage).url()!}
       />
       <article className="mx-auto max-w-4xl p-5">
-        <h1 className="mt-8 mb-3 text-3xl">{post.title}</h1>
-        <h2 className="mb-2 text-xl font-light text-gray-500">
+        <h1 className="mt-8 mb-1 text-4xl font-bold">{post.title}</h1>
+        <h2 className="mb-1 text-xl font-light text-gray-500">
           {post.description}
         </h2>
-        <div className="mt-0 mb-4 flex gap-x-2 overflow-hidden">
+        <div className="mb-4 flex gap-x-2 overflow-hidden">
           {post.categories.map((item) => (
             <Category key={item.name} name={item.name} color={item.color} />
           ))}

@@ -9,7 +9,7 @@ interface CategoryProps {
 export const Category: React.FC<CategoryProps> = ({ color, name }) => {
   return (
     <div
-      className="rounded px-2 py-1 text-xs"
+      className="rounded px-2 py-1 text-xs font-semibold"
       style={{
         backgroundColor: color,
         color: fontColorContrast(color),

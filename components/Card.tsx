@@ -36,10 +36,10 @@ export const Card: React.FC<CardProps> = ({
           className="h-60 w-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
           src={urlFor(mainImage).url()!}
         />
-        <div className="flex items-center justify-between bg-white p-5">
+        <div className="flex items-center justify-between bg-white p-4">
           <div>
-            <p className="text-lg font-bold">{title}</p>
-            <p className="text-xs">{description}</p>
+            <p className="text-xl font-bold">{title}</p>
+            <p className="text-xs font-light text-gray-500">{description}</p>
             <div className="mt-2 mb-0 flex gap-x-2 overflow-hidden">
               {categories.map((item) => (
                 <Category key={item.name} name={item.name} color={item.color} />

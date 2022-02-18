@@ -5,7 +5,7 @@ export const Banner: React.FC = () => {
     <div className="border-b border-black bg-yellow-500 px-5 ">
       <div className="mx-auto flex max-w-7xl items-center justify-between py-10 lg:py-0">
         <div className="space-y-5">
-          <div className="max-w-xl font-sans text-5xl">
+          <div className="max-w-xl font-sans text-3xl sm:text-5xl">
             <h1 className="mb-0">
               Welcome to{' '}
               <span className="font-bold tracking-tighter">WAWA React</span>.
