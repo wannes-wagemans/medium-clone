@@ -97,7 +97,10 @@ function Post({ post }: Props) {
                 </a>
               ),
               blockquote: (props: any) => (
-                <p className="my-4 bg-slate-800 p-4 text-white" {...props} />
+                <p
+                  className="my-4 whitespace-pre bg-slate-800 p-4 text-white"
+                  {...props}
+                />
               ),
               span: (props: any) => (
                 <span className="text-green-500" {...props} />
