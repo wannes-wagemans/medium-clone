@@ -27,8 +27,8 @@ export const Banner: React.FC = () => {
           </h2>
         </div>
         <img
-          className="hidden h-32 md:inline-flex lg:h-80 lg:py-10"
-          src="/ReactLogo.svg"
+          className="hidden h-32 md:inline-flex lg:h-72 lg:py-12"
+          src="/BannerImage.svg"
           alt="Wannes logo short"
         />
       </div>
